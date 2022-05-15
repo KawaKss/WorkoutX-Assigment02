@@ -11,7 +11,7 @@ interface Listener{
     fun onWorkoutclick(workout: ExerciseModel)
 }
 
-class ExerciseAdapter constructor(private var exercises: List<ExerciseModel>, val listener :Listener)
+class ExerciseAdapter constructor(private var exercises: MutableList<ExerciseModel>, val listener :Listener)
     : RecyclerView.Adapter<ExerciseAdapter.MainHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainHolder {
@@ -26,11 +26,19 @@ class ExerciseAdapter constructor(private var exercises: List<ExerciseModel>, va
         holder.bind(exercise,listener)
     }
 
+    fun removeAt(position: Int) {
+        exercises.removeAt(position)
+        notifyItemRemoved(position)
+    }
+
     override fun getItemCount(): Int = exercises.size
 
     inner class MainHolder(val binding : CardExerciseBinding) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(exercise: ExerciseModel, listener: Listener) {
+
+            binding.root.tag = exercise
+
 
             itemView.setOnClickListener{listener.onWorkoutclick(exercise)}
 

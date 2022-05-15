@@ -125,9 +125,9 @@ return root
 
     //Sets the variables from received model
     private fun variablesetter(){
-        workoutName = model.workoutName
-        workoutType = model.workoutType
-        workoutDuration = model.workoutDuration
+        workoutName = model.workoutName.toString()
+        workoutType = model.workoutType.toString()
+        workoutDuration = model.workoutDuration.toString()
 
 
 //        <item>Chest</item>  0

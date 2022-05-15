@@ -15,6 +15,8 @@ import ie.wit.workoutx.databinding.HomeBinding
 import ie.wit.workoutx.databinding.NavHeaderBinding
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.firebase.ui.auth.AuthUI
+import com.firebase.ui.auth.FirebaseAuthUIActivityResultContract
 import com.google.firebase.auth.FirebaseUser
 import ie.wit.workoutx.auth.Login
 
@@ -48,7 +50,12 @@ class Home : AppCompatActivity() {
 
         val navView = homeBinding.navView
         navView.setupWithNavController(navController)
+
+
+
     }
+
+
 
     public override fun onStart() {
         super.onStart()
@@ -78,7 +85,7 @@ class Home : AppCompatActivity() {
     }
 
     fun signOut(item: MenuItem) {
-        loggedInViewModel.logOut()
+        loggedInViewModel.logOut(this)
         //Launch Login activity and clear the back stack to stop navigating back to the Home activity
         val intent = Intent(this, Login::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)

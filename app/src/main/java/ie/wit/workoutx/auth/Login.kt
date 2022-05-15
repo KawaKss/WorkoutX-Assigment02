@@ -9,6 +9,9 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.firebase.ui.auth.AuthUI
+import com.firebase.ui.auth.FirebaseAuthUIActivityResultContract
+import com.firebase.ui.auth.data.model.FirebaseAuthUIAuthenticationResult
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import ie.wit.workoutx.activities.Home
 import timber.log.Timber
@@ -17,6 +20,7 @@ import ie.wit.workoutx.databinding.LoginBinding
 import com.google.android.gms.common.SignInButton
 import com.google.android.gms.common.api.ApiException
 import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 
 class Login : AppCompatActivity() {
@@ -38,12 +42,47 @@ class Login : AppCompatActivity() {
             createAccount(loginBinding.fieldEmail.text.toString(),
                 loginBinding.fieldPassword.text.toString())
         }
-        loginBinding.googleSignInButton.setSize(SignInButton.SIZE_WIDE)
-        loginBinding.googleSignInButton.setColorScheme(0)
+        //loginBinding.googleSignInButton.setSize(SignInButton.SIZE_WIDE)
+        //loginBinding.googleSignInButton.setColorScheme(0)
 
         loginBinding.googleSignInButton.setOnClickListener {
-            googleSignIn()
+            //googleSignIn()
+            //Choose authentication providers
+            val providers = arrayListOf(
+                AuthUI.IdpConfig.EmailBuilder().build(),
+                AuthUI.IdpConfig.GoogleBuilder().build())
+
+            // Create and launch sign-in intent
+            val signInIntent = AuthUI.getInstance()
+                .createSignInIntentBuilder()
+                .setAvailableProviders(providers)
+                .build()
+            signInLauncher.launch(signInIntent)
         }
+
+
+
+    }
+
+    private fun onSignInResult(result: FirebaseAuthUIAuthenticationResult) {
+        val response = result.idpResponse
+        if (result.resultCode == RESULT_OK) {
+            // Successfully signed in
+            val user = FirebaseAuth.getInstance().currentUser
+            loginRegisterViewModel.liveFirebaseUser.postValue(user)
+            // ...
+        } else {
+            // Sign in failed. If response is null the user canceled the
+            // sign-in flow using the back button. Otherwise check
+            // response.getError().getErrorCode() and handle the error.
+            // ...
+        }
+    }
+
+    private val signInLauncher = registerForActivityResult(
+        FirebaseAuthUIActivityResultContract()
+    ) { res ->
+        this.onSignInResult(res)
     }
 
     public override fun onStart() {

@@ -31,7 +31,7 @@ class ExerciseMemStore : ExerciseStore {
     }
 
 
-    override fun findAll(): List<ExerciseModel> {
+    override fun findAll(): MutableList<ExerciseModel> {
         deserialize()
         return exercises
     }
