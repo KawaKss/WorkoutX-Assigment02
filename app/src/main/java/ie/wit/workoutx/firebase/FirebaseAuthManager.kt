@@ -92,7 +92,12 @@ class FirebaseAuthManager(application: Application) {
 
 
     fun logOut() {
+
         firebaseAuth!!.signOut()
+        Timber.i( "WorkoutX : firebaseAuth Signed out")
+        googleSignInClient.value!!.signOut()
+        Timber.i( "WorkoutX : googleSignInClient Signed out")
+        //FirebaseImageManager.imageUri = null!!
         loggedOut.postValue(true)
         errorStatus.postValue(false)
     }
