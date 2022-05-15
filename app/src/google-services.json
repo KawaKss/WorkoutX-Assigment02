@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1060189154517",
+    "project_id": "workoutx-4d724",
+    "storage_bucket": "workoutx-4d724.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1060189154517:android:a4e8ceeebb11621d46865c",
+        "android_client_info": {
+          "package_name": "ie.wit.workoutx"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1060189154517-gkt7jb2gem5dbbjs98br2mjljkustaat.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "ie.wit.workoutx",
+            "certificate_hash": "da39a3ee5e6b4b0d3255bfef95601890afd80709"
+          }
+        },
+        {
+          "client_id": "1060189154517-sac0u9ba4afkd7cc4q3n4g191bkp8vje.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBzuBz5xZ6WoBlH7EQnjyjIoZ9vKRHHRNI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1060189154517-4tea1e92u5dpdrhjt3rc2iqusaumsmcp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

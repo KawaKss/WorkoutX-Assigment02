@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="8dp"
+    android:elevation="24dp"
+    android:id="@+id/workoutCard"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+        <ImageView
+            android:id="@+id/imageIcon"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginEnd="16dp"
+            android:contentDescription="@string/app_name"
+            app:srcCompat="@mipmap/ic_launcher_round" />
+
+        <TextView
+            android:id="@+id/workName"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="21dp"
+            android:layout_marginTop="26dp"
+            android:layout_toEndOf="@+id/imageIcon"
+            android:textSize="24sp"
+            tools:text="@string/workName" />
+
+        <TextView
+            android:id="@+id/workDuration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="10dp"
+            android:layout_toEndOf="@+id/workName"
+            android:text="@string/workDuration"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/workType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/workDuration"
+            android:layout_marginStart="22dp"
+            android:layout_marginTop="3dp"
+            android:layout_toEndOf="@+id/workName"
+            android:text="@string/workType"
+            android:textSize="24sp" />
+
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>
